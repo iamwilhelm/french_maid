@@ -18,8 +18,10 @@ $(document).ready(function() {
         return false;
     };
 
-    /* Basic link to remote equivalent in Rails.
-     * creates a GET ajax link to the server
+    /* Makes an AJAX link that makes GET request and uses result to 
+     * update DOM element
+     * 
+     * It's identified by having an attribute called data-remote="true"
      * 
      * It has a couple attributes it uses:
      * 
@@ -40,15 +42,8 @@ $(document).ready(function() {
                       success : success_callback
                     });
         });                      
-     * 
-     *   * data-action - The URL where to make the AJAX request
-     *   * data-target - Which DOM element to insert the results of the request
-     *        Use JQuery selectors to target the element
-     *   * data-effect - The jquery effect to use to transition in the new 
-     *        results.
-     * 
-     * Note that you need jquery-ui in order to use the effects.
-     */
+
+
 
     /* Makes a button toggle a div.
      * 
