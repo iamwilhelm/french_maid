@@ -39,8 +39,8 @@ $(document).ready(function() {
             };
 
             return request({ url : this.href,
-                      success : success_callback
-                    });
+                             success : success_callback
+                           });
         });                      
 
 
