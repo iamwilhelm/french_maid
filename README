@@ -1,0 +1,26 @@
+h1. French Maid
+
+h2. What is French maid?
+
+French maid is a set of unobtrusive javascript that functionally enhances your 
+links, forms, and microformats.
+
+While Rails has a set of helpers and javascripts to create ajax elements, working 
+in Sinatra didn't, so I created these to help ease writing them from scratch in 
+Javascript everytime.
+
+h2. Installation
+
+More details to come, but it depends on jQuery 1.3.2
+
+You will also need to install the sintatra gem if you'd like to run the manual tests
+
+h3. Manually testing
+
+To see a page for a manual test of all its capabilities, you'll need to make sure 
+that you have the sinatra gem installed.  And then simply run:
+
+  ruby test/test.rb
+
+And then navigate to http://localhost:4567 and start clicking around.
+
