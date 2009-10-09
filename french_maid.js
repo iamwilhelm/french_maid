@@ -3,26 +3,43 @@ $(document).ready(function() {
     /* Helper function to return all the data- attributes from the element
      * and returns a hash of all elements
      */
-    parse_data_attrs = function(elem) {
+    var parse_data_attrs = function(elem) {
         var hash = new Object();
-        
-        // filter all attributes that start with "data-" and create
-        // 
         $.each($.grep(elem.attributes, 
-                      function(attr, i) {
-                          return attr.name.match(/^data-/);
-                      }), 
+                      function(attr, i) { return attr.name.match(/^data-/); }), 
                function() {
                    hash[this.name.replace(/^data-/, "")] = this.value;
                });
-
         return hash;
     };
 
-    /* Makes an GET ajax link and posts the result from server in the target 
-     * DOM element
+    var request = function(options) {
+        $.ajax($.extend({ url : options.url, type : 'get' }, options));
+        return false;
+    };
+
+    /* Basic link to remote equivalent in Rails.
+     * creates a GET ajax link to the server
      * 
-     * It has a couple parameters it uses:
+     * It has a couple attributes it uses:
+     * 
+     *   * href - The URL where to make the AJAX request
+     *   * data-update-success - the id of the DOM elem to put the result
+     */
+    $("a[data-remote=true]").live("click", 
+        function(event) {
+            var data = parse_data_attrs(this);
+            
+            $("#" + data['update-success']).html("Loading...");
+
+            var success_callback = function(response_html) {
+                $("#" + data['update-success']).html(response_html);
+            };
+
+            return request({ url : this.href,
+                      success : success_callback
+                    });
+        });                      
      * 
      *   * data-action - The URL where to make the AJAX request
      *   * data-target - Which DOM element to insert the results of the request
@@ -31,23 +48,7 @@ $(document).ready(function() {
      *        results.
      * 
      * Note that you need jquery-ui in order to use the effects.
-     * 
-     * Example:
-     *   <a href="#" class="get"
-     *               data-href="/posts/new"
-     *               data-target="#post_new"
-     *   </a>
      */
-    $("a[rel*=rest_get]").live("click", 
-        function(event) {
-            var data = parse_data_attrs(event.target);
-
-            $(data.target).html("Loading...");
-            
-            $.get(data.action, function(response_html) { 
-                      $(data.target).html(response_html);
-                  });
-        });
 
     /* Makes a button toggle a div.
      * 
