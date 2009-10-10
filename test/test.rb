@@ -2,7 +2,6 @@ require 'rubygems'
 require 'sinatra'
 
 configure do
-  set :public, File.join(File.dirname(__FILE__), "..")
 end
 
 get '/' do
