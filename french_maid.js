@@ -26,15 +26,15 @@ $(document).ready(function() {
      * It has a couple attributes it uses:
      * 
      *   * href - The URL where to make the AJAX request
-     *   * data-update-success - the id of the DOM elem to put the result
+     *   * data-update - the id of the DOM elem to put the result
      */
     $("a[data-remote=true]").live("click", 
         function(event) {
             var data = parse_data_attrs(this);
-            $("#" + data['update-success']).html("Loading...");
+            $("#" + data['update']).html("Loading...");
 
             var success_callback = function(response_html) {
-                $("#" + data['update-success']).html(response_html);
+                $("#" + data['update']).html(response_html);
             };
 
             return request({ url : this.href,
