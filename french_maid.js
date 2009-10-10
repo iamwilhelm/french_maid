@@ -31,7 +31,6 @@ $(document).ready(function() {
     $("a[data-remote=true]").live("click", 
         function(event) {
             var data = parse_data_attrs(this);
-            
             $("#" + data['update-success']).html("Loading...");
 
             var success_callback = function(response_html) {
@@ -43,7 +42,30 @@ $(document).ready(function() {
                            });
         });                      
 
+    /* Makes a form make an ajax request
+     * 
+     * The form needs a couple attributes:
+     * 
+     *   * action - The URL to submit the AJAX request
+     *   * method - The method in which to submit
+     *   * data-remote - true
+     *   * data-update - 
+     */
+    $("form[data-remote=true]").live("submit", 
+        function(event) {
+            var data = parse_data_attrs(this);
+            $("#" + data['update']).html("Loading...");
+            
+            var success_callback = function(response_html) {
+                $("#" + data['update']).html(response_html);
+            };
 
+            return request({ url : this.action, 
+                             type : this.method, 
+                             data : $(this).serialize(),
+                             success : success_callback
+                           });
+        });
 
     /* Makes a button toggle a div.
      * 

@@ -34,6 +34,21 @@
       </p>
     </div>
 
+    <h2>Polishing forms</h2>
+    
+    <div class="section">
+      <h3>Remote POST form submit</h3>
+      <p>
+        Submit a french food
+      </p>
+      <form action="create" method="post" data-remote="true" 
+            data-update="new_french_food">
+        <input type="text_field" name="food[name]" />
+        <input type="submit" name="submit[create]" value="Create" />
+      </form>
+      <p id="new_french_food">
+      </p>
+    </div>
       
   </body>
 </html>
