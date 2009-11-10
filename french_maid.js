@@ -73,11 +73,11 @@ $(document).ready(function() {
      *   <div id="expand" style="display: none">Here is some hidden secret info!</div>
      *
      */
-    $("button.toggle").click(
+    $("button.toggle").live("click",
         function() {
             $("#" + $(this).attr("data-target")).toggle("slow");
         });
-
+    
     /* Makes all preview buttons in previewable forms trigger a custom event 
      * called preview on the form
      */
