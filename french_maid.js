@@ -19,15 +19,7 @@ $(document).ready(function() {
     };
 
     /* Makes an AJAX link that makes GET request and uses result to 
-     * update DOM element
-     * 
-     * It's identified by having an attribute called data-remote="true"
-     * 
-     * It has a couple attributes it uses:
-     * 
-     *   * href - The URL where to make the AJAX request
-     *   * data-update - the id of the DOM elem to put the result
-     */
+     * update DOM element */
     $("a[data-remote=true]").live("click", 
         function(event) {
             var data = parse_data_attrs(this);
@@ -42,15 +34,7 @@ $(document).ready(function() {
                            });
         });                      
 
-    /* Makes a form make an ajax request
-     * 
-     * The form needs a couple attributes:
-     * 
-     *   * action - The URL to submit the AJAX request
-     *   * method - The method in which to submit
-     *   * data-remote - true
-     *   * data-update - 
-     */
+    /* Makes a form make an ajax request */
     $("form[data-remote=true]").live("submit", 
         function(event) {
             var data = parse_data_attrs(this);
@@ -67,24 +51,18 @@ $(document).ready(function() {
                            });
         });
 
-    /* Makes a button toggle a div.
-     * 
-     *   <a href="" data-target="expand">Toggle</a>
-     *   <div id="expand" style="display: none">Here is some hidden secret info!</div>
-     *
-     */
+    /* Makes a link toggle a div. */
     $("a[data-update]").live("click",
         function(event) {
             var data = parse_data_attrs(this);
             if (data['remote'] == true) { return false; };
 
-            $("#" + data['update']).toggle("slow");
+            $("#" + data['update']).toggle("fast");
             return false;
         });
     
     /* Makes all preview buttons in previewable forms trigger a custom event 
-     * called preview on the form
-     */
+     * called preview on the form */
     $("form input.preview").live("click",
         function(event) {
             // trigger the preview event in the surrounding closest parent form

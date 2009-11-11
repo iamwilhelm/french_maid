@@ -35,6 +35,17 @@
         A list of famous french women</a>
       <p id="french_women_list">
       </p>
+      <a href="" data-update="remote_get_docs">docs</a>
+      <div id="remote_get_docs" class="hidden">
+        <p>
+          It's identified by having an attribute called data-remote="true"
+        </p>
+        It has a couple attributes it uses:
+        <ul>
+          <li>href - The URL where to make the AJAX request</li>
+          <li>data-update - the id of the DOM elem to put the result</li>
+        </ul>
+      </div>
     </div>
 
     <div class="section">
@@ -47,6 +58,12 @@
         <li>Hoover</li>
         <li>Swiffer</li>
       </ul>
+      <p/>
+      <a href="" data-update="no_remote_toggle_docs">docs</a>
+      <div id="no_remote_toggle_docs" class="hidden">
+        Without a data-remote attribute equal to true, by simply putting in the 
+        data-update field makes the DOM element it's pointing to toggle
+      </div>
     </div>
 
     <h2>Polishing forms</h2>
@@ -63,6 +80,16 @@
       </form>
       <p id="new_french_food">
       </p>
+      <a href="" data-update="remote_get_doc">docs</a>
+      <div id="remote_get_doc" class="hidden">
+        The form needs a couple attributes:
+        <ul>
+          <li>data-remote - needs to be set to true</li>
+          <li>action - The URL to submit the AJAX request</li>
+          <li>method - The method in which to submit</li>
+          <li>data-update - the id of html element to put results</li>
+        </ul>
+      </div>
     </div>
       
   </body>
