@@ -21,6 +21,9 @@
       background-repeat: no-repeat;
       padding-top: 30px;
     }
+    .hidden {
+      display: none;
+    }
   </style>
   <body>
     <h2>Polishing links</h2>
@@ -32,6 +35,18 @@
         A list of famous french women</a>
       <p id="french_women_list">
       </p>
+    </div>
+
+    <div class="section">
+      <h3>Non-remote links to toggle sections</h3>
+      <a href="" data-update="vacuums_list">
+        A list of vacuums
+      </a>
+      <ul id="vacuums_list" class="hidden">
+        <li>Dyson</li>
+        <li>Hoover</li>
+        <li>Swiffer</li>
+      </ul>
     </div>
 
     <h2>Polishing forms</h2>

@@ -69,13 +69,17 @@ $(document).ready(function() {
 
     /* Makes a button toggle a div.
      * 
-     *   <button class="toggle" data-target="expand">Toggle</button>
+     *   <a href="" data-target="expand">Toggle</a>
      *   <div id="expand" style="display: none">Here is some hidden secret info!</div>
      *
      */
-    $("button.toggle").live("click",
-        function() {
-            $("#" + $(this).attr("data-target")).toggle("slow");
+    $("a[data-update]").live("click",
+        function(event) {
+            var data = parse_data_attrs(this);
+            if (data['remote'] == true) { return false; };
+
+            $("#" + data['update']).toggle("slow");
+            return false;
         });
     
     /* Makes all preview buttons in previewable forms trigger a custom event 
