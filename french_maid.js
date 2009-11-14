@@ -20,20 +20,25 @@ $(document).ready(function() {
 
     /* Makes an AJAX link that makes GET request and uses result to 
      * update DOM element */
-    $("a[data-remote=true]").live("click", 
+    $("a[data-remote]").live("click", 
         function(event) {
             var data = parse_data_attrs(this);
-            $("#" + data['update']).html("Loading...");
+            if (data['remote'] == "true") {
+                $("#" + data['update']).html("Loading...");
+                
+                var success_callback = function(response_html) {
+                    $("#" + data['update']).html(response_html);
+                };
 
-            var success_callback = function(response_html) {
-                $("#" + data['update']).html(response_html);
+                return request({ url : this.href,
+                                 success : success_callback
+                               });                
+            } else {
+                $("#" + data['update']).toggle("fast");
+                return false;
             };
-
-            return request({ url : this.href,
-                             success : success_callback
-                           });
         });                      
-
+     
     /* Makes a form make an ajax request */
     $("form[data-remote=true]").live("submit", 
         function(event) {
@@ -49,16 +54,6 @@ $(document).ready(function() {
                              data : $(this).serialize(),
                              success : success_callback
                            });
-        });
-
-    /* Makes a link toggle a div. */
-    $("a[data-update]").live("click",
-        function(event) {
-            var data = parse_data_attrs(this);
-            if (data['remote'] == true) { return false; };
-
-            $("#" + data['update']).toggle("fast");
-            return false;
         });
     
     /* Makes all preview buttons in previewable forms trigger a custom event 
