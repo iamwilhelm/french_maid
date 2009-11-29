@@ -28,21 +28,28 @@
     <h2>Polishing links</h2>
       
     <div class="section">
-      <h3>Remote GET request</h3>
-      <a id="test" href="/french_women" data-remote="true" data-update="french_women_list">
+      <h3>Remote GET request that returns HTML (AHAH microformat)</h3>
+      <a href="/french_women" data-remote="true" data-update="french_women_list">
         A list of famous french women</a>
       <p id="french_women_list">
       </p>
       <a href="" data-remote="false" data-update="remote_get_docs">docs</a>
       <div id="remote_get_docs" class="hidden">
         <p>
-          It's identified by having an attribute called data-remote="true"
+          To create a remote GET request link, add a <i>data-remote='true'</i> 
+          attribute to any link.
         </p>
         It has a couple attributes it uses:
         <ul>
           <li>href - The URL where to make the AJAX request</li>
           <li>data-update - the id of the DOM elem to put the result</li>
         </ul>
+        <p>
+          Note that it requires the server to return html
+        </p>
+      </div>
+    </div>
+
     <div class="section">
       <h3>Remote GET request that returns data as JSON</h3>
       <script type="text/javascript">
@@ -90,8 +97,9 @@
       <p/>
       <a href="" data-remote="false" data-update="no_remote_toggle_docs">docs</a>
       <div id="no_remote_toggle_docs" class="hidden">
-        Without a data-remote attribute equal to true, by simply putting in the 
-        data-update field makes the DOM element it's pointing to toggle
+        With the data-remote attribute set to false, by simply putting in the 
+        data-update field makes the DOM element it's pointing to toggle on and off.
+        Make sure that the href attribute is present, but empty.
       </div>
     </div>
 
