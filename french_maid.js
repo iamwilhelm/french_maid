@@ -23,20 +23,33 @@ $(document).ready(function() {
     $("a[data-remote]").live("click", 
         function(event) {
             var data = parse_data_attrs(this);
-            if (data['remote'] == "true") {
+            if (data['remote'] == "false") {
+                $("#" + data['update']).toggle("fast");
+                return false;
+            }
+
+            if (data['update'] != null) {
                 $("#" + data['update']).html("Loading...");
-                
                 var success_callback = function(response_html) {
                     $("#" + data['update']).html(response_html);
                 };
 
                 return request({ url : this.href,
                                  success : success_callback
-                               });                
-            } else {
-                $("#" + data['update']).toggle("fast");
+                               });
                 return false;
-            };
+            } else if (data['update-success'] != null) {
+                return request({ url : this.href,
+                                 success : eval(data['update-success']),
+                                 error : eval(data['update-failure']),
+                                 dataType : "json"
+                               });
+                return false;
+            }
+            
+            // should never get here, but will alert with data if it does
+            alert(data.toSource());
+            return false;
         });                      
      
     /* Makes a form make an ajax request */

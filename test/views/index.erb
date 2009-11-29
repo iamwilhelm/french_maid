@@ -43,6 +43,37 @@
           <li>href - The URL where to make the AJAX request</li>
           <li>data-update - the id of the DOM elem to put the result</li>
         </ul>
+    <div class="section">
+      <h3>Remote GET request that returns data as JSON</h3>
+      <script type="text/javascript">
+        $(document).ready(function() {
+          calcAverage = function(data, textStatus) {
+            var total = 0, number = 0, average = 0;
+            for (key in data) {
+               total += data[key];
+               number += 1;
+            };
+            average = (number == 0) ? 0.0 : (total / number);
+
+            $("#french_heights").html(
+              "Called calcAverage() and used json data passed as parameter" + "<br/>" + 
+              "JSON data:" + data.toSource() + "<br/>" + 
+              "The average height is: " + average + "<br/>");
+          };
+        });
+      </script>
+      <a href="/heights" data-remote="true" data-update-success="calcAverage">
+        A list of heights of random french women</a>
+      <p id="french_heights">
+      </p>
+      <a href="" data-remote="false" data-update="remote_get_function_docs">docs</a>
+      <div id="remote_get_function_docs" class="hidden">
+        <p>
+          When you want to process json data returned by the server, make sure 
+          <i>data-remote="true"</i> as usual, but this time, <i>data-update-success</i>
+          is the javascript callback function that needs to execute in order to process
+          the JSON data returned from the server.
+        </p>
       </div>
     </div>
 
