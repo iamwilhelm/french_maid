@@ -85,6 +85,24 @@ $(document).ready(function() {
                              success : success_callback
                            });
         });
+
+    /* Makes GPL x.x */
+    $.each($("a[rel=license][data-license]"), 
+           function() {
+               var licenses = { 
+                   gpl: { 
+                       url: "http://creativecommons.org/licenses/GPL/2.0/",
+                       image: "<img alt='CC-GNU GPL' border='0' src='http://creativecommons.org/images/public/cc-GPL-a.png' />" 
+                   },
+                   pd: { 
+                       url: "http://creativecommons.org/licenses/publicdomain/",
+                       image: "<img alt='Creative Commons License' style='border-width:0' src='http://i.creativecommons.org/l/publicdomain/88x31.png' />" 
+                   } };
+               var type = $(this).attr("data-license");
+
+               $(this).attr('href', licenses[type]["url"]);
+               $(this).html(licenses[type]["image"]);
+           });
     
     /* Makes all preview buttons in previewable forms trigger a custom event 
      * called preview on the form */
