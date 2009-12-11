@@ -13,6 +13,23 @@ $(document).ready(function() {
         return hash;
     };
 
+    /* Helper function that dynamically gets the function given by the name
+     * at the window level.
+     */
+    var getFunction = function(func_name) {
+        if ( func_name == undefined || func_name === "" ) return null;
+
+        var matches = func_name.match(/([\d\w]+)\.?([\d\w]+)?/);
+        if ( matches[2] == undefined ) {
+            var method_name = matches[1];
+            return window[method_name];
+        } else {
+            var obj_name = matches[1];
+            var method_name = matches[2];
+            return window[obj_name].method_name;
+        };
+    };
+
     var request = function(options) {
         $.ajax($.extend({ url : options.url, type : 'get' }, options));
         return false;
@@ -40,8 +57,8 @@ $(document).ready(function() {
                 return false;
             } else if (data['update-success'] != null) {
                 return request({ url : this.href,
-                                 success : eval(data['update-success']),
-                                 error : eval(data['update-failure']),
+                                 success : getFunction(data['update-success']),
+                                 error : getFunction(data['update-failure']),
                                  dataType : "json"
                                });
                 return false;
