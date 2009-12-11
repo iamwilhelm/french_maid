@@ -104,7 +104,13 @@ $(document).ready(function() {
                        url: "http://creativecommons.org/licenses/publicdomain/",
                        image: "http://i.creativecommons.org/l/publicdomain/88x31.png",
                        alt: "Creative Commons License"
-                   } };
+                   },
+                   cc0: {
+                       url: "http://creativecommons.org/publicdomain/zero/1.0/",
+                       image: "http://i.creativecommons.org/l/zero/1.0/88x31.png",
+                       alt: "CC0"
+                   }
+               };
                var type = $(this).attr("data-license");
 
                $(this).attr('href', licenses[type]["url"]);
