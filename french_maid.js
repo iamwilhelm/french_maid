@@ -3,7 +3,7 @@ $(document).ready(function() {
     /* Helper function to return all the data- attributes from the element
      * and returns a hash of all elements
      */
-    var parse_data_attrs = function(elem) {
+    var parseDataAttrs = function(elem) {
         var hash = new Object();
         $.each($.grep(elem.attributes, 
                       function(attr, i) { return attr.name.match(/^data-/); }), 
@@ -22,7 +22,7 @@ $(document).ready(function() {
      * update DOM element */
     $("a[data-remote]").live("click", 
         function(event) {
-            var data = parse_data_attrs(this);
+            var data = parseDataAttrs(this);
             if (data['remote'] == "false") {
                 $("#" + data['update']).toggle("fast");
                 return false;
@@ -55,7 +55,7 @@ $(document).ready(function() {
     /* Makes a form make an ajax request */
     $("form[data-remote=true]").live("submit", 
         function(event) {
-            var data = parse_data_attrs(this);
+            var data = parseDataAttrs(this);
             $("#" + data['update']).html("Loading...");
             
             var success_callback = function(response_html) {
