@@ -86,37 +86,37 @@ $(document).ready(function() {
                            });
         });
 
-    /* Makes GPL x.x */
-    $.each($("a[rel=license][data-license]"), 
-           function() {
-               var licenses = { 
-                   gpl: { 
-                       url: "http://creativecommons.org/licenses/GPL/2.0/",
-                       image: "http://creativecommons.org/images/public/cc-GPL-a.png",
-                       alt: "CC-GNU GPL"
-                   },
-                   lgpl: {
-                       url: "http://creativecommons.org/licenses/LGPL/2.1/",
-                       image: "http://creativecommons.org/images/public/cc-LGPL-a.png",
-                       alt: "CC-GNU LGPL"
-                   },
-                   pd: { 
-                       url: "http://creativecommons.org/licenses/publicdomain/",
-                       image: "http://i.creativecommons.org/l/publicdomain/88x31.png",
-                       alt: "Creative Commons License"
-                   },
-                   cc0: {
-                       url: "http://creativecommons.org/publicdomain/zero/1.0/",
-                       image: "http://i.creativecommons.org/l/zero/1.0/88x31.png",
-                       alt: "CC0"
-                   }
-               };
-               var type = $(this).attr("data-license");
-
-               $(this).attr('href', licenses[type]["url"]);
-               $(this).html("<img alt='" + licenses[type]["alt"] + 
-                            "' border='0' src='" + licenses[type]["image"] + "' />");
-           });
+    /* Morphs license microformats */
+    var licenseMorpher = function() {
+        var type = $(this).attr("data-license");
+        
+        $(this).attr('href', licenseMorpher.licenses[type]["url"]);
+        $(this).html("<img alt='" + licenseMorpher.licenses[type]["alt"] + 
+                     "' border='0' src='" + licenseMorpher.licenses[type]["image"] + "' />");
+    };
+    licenseMorpher.licenses = { 
+        gpl: { 
+            url: "http://creativecommons.org/licenses/GPL/2.0/",
+            image: "http://creativecommons.org/images/public/cc-GPL-a.png",
+            alt: "CC-GNU GPL"
+        },
+        lgpl: {
+            url: "http://creativecommons.org/licenses/LGPL/2.1/",
+            image: "http://creativecommons.org/images/public/cc-LGPL-a.png",
+            alt: "CC-GNU LGPL"
+        },
+        pd: { 
+            url: "http://creativecommons.org/licenses/publicdomain/",
+            image: "http://i.creativecommons.org/l/publicdomain/88x31.png",
+            alt: "Creative Commons License"
+        },
+        cc0: {
+            url: "http://creativecommons.org/publicdomain/zero/1.0/",
+            image: "http://i.creativecommons.org/l/zero/1.0/88x31.png",
+            alt: "CC0"
+        }
+    };
+    $.each($("a[rel=license][data-license]"), licenseMorpher);
     
     /* Makes all preview buttons in previewable forms trigger a custom event 
      * called preview on the form */
