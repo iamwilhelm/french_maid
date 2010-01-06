@@ -86,6 +86,25 @@ $(document).ready(function() {
                            });
         });
 
+    /* Placeholder attribute for input */
+    var placeholdify = function(elem) {
+        $(elem).val($(elem).attr("placeholder"));
+        $(elem).attr("style", "color: #aaa;");
+    };
+    $.each($("form input[placeholder]"), function() { placeholdify(this); });
+    $("form input[placeholder]").blur(
+        function() {
+            if ( $(this).val() == "" )
+                placeholdify(this);
+        });
+    $("form input[placeholder]").focus(
+        function() {
+            $(this).attr("style", "color: #000");
+            if ( $(this).val() == $(this).attr("placeholder") )
+                $(this).val("");
+        });
+    
+
     /* Morphs license microformats */
     var licenseMorpher = function() {
         var type = $(this).attr("data-license");

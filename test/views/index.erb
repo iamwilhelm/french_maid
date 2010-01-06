@@ -154,7 +154,30 @@
       </div>
     </div>
 
-    <h2>Polishing licenses</h2>
+    <div class="section">
+      <h3>Search form placeholder (<a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/common-input-element-attributes.html#attr-input-placeholder">HTML5 specification</a>)</h3>
+      <p>
+        Puts a form placeholder if the browser doesn't support HTML5's spec
+      </p>
+      <form action="create" method="post" data-remote="true" 
+            data-update="placeholder_french_food">
+        <input type="text_field" name="food[name]" placeholder="Type a food here" />
+        <input type="submit" name="submit[create]" value="Create" />
+      </form>
+      <p id="placeholder_french_food">
+      </p>
+      
+      <a href="" data-remote="false" data-update="placeholder_doc">docs</a>
+      <div id="placeholder_doc" class="hidden">
+        Simply put a placeholder attribute in the input tag
+        <pre>&lt;input type="text_field" placeholder="Type a food here" /&gt;</pre>
+      </div>      
+    </div>
+
+    <h2>
+      <a name="polish_licenses">Polishing licenses</a>
+      <span style="font-size: 0.8em">(<a href="#top">top</a>)</span>
+    </h2>
 
     <div class="section">
       <h3>Public Domain Licenses (<a href="http://microformats.org/wiki/rel-license">license uFormat</a>)</h3>
