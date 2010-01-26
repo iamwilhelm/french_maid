@@ -103,7 +103,18 @@ $(document).ready(function() {
             if ( $(this).val() == $(this).attr("placeholder") )
                 $(this).val("");
         });
-    
+
+    /* adds lorem ipsem for images easily */
+    $.each($("img.lorem"), function(e) {
+            var size = $(this).attr("data-size");
+            var color = $(this).attr("data-color") || "#efef00";
+            var dim = size.split("x");
+            var attrs = "width: " + dim[0] + "px; height: " + dim[1] + "px;" +
+                "font-size: " + (dim[0] / 20 + 6)  + "pt; line-height: " + dim[1] + "px; text-align: center;" +  
+                        "background-color: " + color + "; border: 1px solid black; display: inline-block";
+            
+            $(this).replaceWith("<div style='" + attrs + "'>" + ((dim[0] < 32) ? "" : size) + "</div>");
+        });
 
     /* Morphs license microformats */
     var licenseMorpher = function() {

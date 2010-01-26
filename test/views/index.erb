@@ -35,6 +35,7 @@
     <ul>
       <li><a href="#polish_links">Polishing links</a></li>
       <li><a href="#polish_forms">Polishing forms</a></li>
+      <li><a href="#polish_images">Polishing images</a></li>
       <li><a href="#polish_licenses">Polishing licenses</a></li>
     </ul>
 
@@ -172,6 +173,59 @@
         Simply put a placeholder attribute in the input tag
         <pre>&lt;input type="text_field" placeholder="Type a food here" /&gt;</pre>
       </div>      
+    </div>
+
+    <h2>
+      <a name="polish_images">Polishing images</a>
+      <span style="font-size: 0.8em">(<a href="#top">top</a>)</span>
+    </h2>
+    <div class="section">
+      <h3>Lorem ipsum for images</h3>
+      <p>
+        Can use to lay out a page before you have the actual images.  
+      </p>
+      <table style="width: 400px; border: 1px solid #ddd">
+        <tr>
+          <td style="width: 50px" valign="top">
+            <img class="lorem" data-size="50x50" />
+          </td>
+          <td align="left">
+            <h4><a href="http://github.com/iamwilhelm/french_maid">French Maid</a> 
+              likes bacon, ootoro sushi, and cheese
+            </h4>
+            <p style="font-size: 10px">
+              <img class="lorem" data-size="16x16" /> 3 hours ago via French Maid · Comment · Like
+            </p>
+          </td>
+        </tr>
+      </table>
+
+      <div style="margin: 20px 0px">
+        <% 4.times do %>
+        <div style="float: left; min-width: 150px;">
+          <img class="lorem" data-size="127x102" data-color="#2a8e83"/><br/>
+          A french maid naked<br/>
+          <span style="color: #888">450 x 360 · 28k · jpg</span><br/>
+          fm.com<br/>
+          <a href="http://images.google.com/images?hl=en&um=1&sa=1&q=french+maid&aq=f&oq=&aqi=g10&start=0">
+            Find similar images
+          </a>
+        </div>
+        <% end %>
+      </div>
+
+      <div style="clear: both">&nbsp;</div>
+
+      <a href="" data-remote="false" data-update="image_lorem_docs">docs</a>
+      <div id="image_lorem_docs" class="hidden">
+        An easy way to set the license on a page
+        <ul>
+          <li>class - "lorem"</li>
+          <li>data-size - in the form "200x100"</li>
+          <li>data-color (optional) - some css color</li>
+        </ul>
+      </div>
+
     </div>
 
     <h2>
