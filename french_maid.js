@@ -98,7 +98,7 @@ $(document).ready(function() {
     $.each($("form input[placeholder]"), function() { placeholdify(this); });
     $("form input[placeholder]").blur(
         function() {
-            if ( $(this).val() == "" ) {
+            if ( $(this).val() == "" ) 
                 placeholdify(this);
         });
     $("form input[placeholder]").focus(
