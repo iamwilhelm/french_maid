@@ -6,6 +6,9 @@ require 'json'
 configure do
 end
 
+helpers do
+end
+
 before do
   sleep 1
 end
