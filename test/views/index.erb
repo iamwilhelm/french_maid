@@ -253,7 +253,7 @@
     </div>
 
     <div class="section">
-      <h3>Search form placeholder (<a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/common-input-element-attributes.html#attr-input-placeholder">HTML5 specification</a>)</h3>
+      <h3>Form text field placeholder (<a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/common-input-element-attributes.html#attr-input-placeholder">HTML5 specification</a>)</h3>
       <p>
         Puts a form placeholder if the browser doesn't support HTML5's spec
       </p>
@@ -269,6 +269,26 @@
       <div id="placeholder_doc" class="hidden">
         Simply put a placeholder attribute in the input tag
         <pre>&lt;input type="text_field" placeholder="Type a food here" /&gt;</pre>
+      </div>      
+    </div>
+
+    <div class="section">
+      <h3>Search boxes (<a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/links.html#link-type-search">HTML5 specification</a>)</h3>
+      <p>
+        Styles a text field like a search field
+      </p>
+      <form action="create" method="post" data-remote="true"
+            data-update="search_fench_food">
+        <input type="search" name="food[name]" />
+        <input type="submit" name="submit[create]" value="Search" />
+      </form>
+      <p id="search_french_food">
+      </p>
+
+      <a href="" data-remote="false" data-update="search_doc">docs</a>
+      <div id="search_doc" class="hidden">
+        Style a search textbox
+        <pre>&lt;input type="search" /&gt;</pre>
       </div>      
     </div>
 
@@ -315,7 +335,10 @@
 
       <a href="" data-remote="false" data-update="image_lorem_docs">docs</a>
       <div id="image_lorem_docs" class="hidden">
-        An easy way to set the license on a page
+        An easy way to set the license on a page.  Make a image placeholder that's 75x75
+        <p>
+          <img class="lorem" data-size="75x75" />
+        </p>
         <ul>
           <li>class - "lorem"</li>
           <li>data-size - in the form "200x100"</li>

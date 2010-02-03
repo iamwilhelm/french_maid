@@ -89,17 +89,21 @@ $(document).ready(function() {
     /* Placeholder attribute for input */
     var placeholdify = function(elem) {
         $(elem).val($(elem).attr("placeholder"));
-        $(elem).attr("style", "color: #aaa;");
+        placeholdify.userStyle = $(elem).attr("style");
+        placeholdify.colorize(elem, "#aaa");
+    };
+    placeholdify.colorize = function(elem, color) {
+        $(elem).attr("style", "color: " + color + ";" + placeholdify.userStyle);
     };
     $.each($("form input[placeholder]"), function() { placeholdify(this); });
     $("form input[placeholder]").blur(
         function() {
-            if ( $(this).val() == "" )
+            if ( $(this).val() == "" ) 
                 placeholdify(this);
         });
     $("form input[placeholder]").focus(
         function() {
-            $(this).attr("style", "color: #000");
+            placeholdify.colorize(this, "#000");
             if ( $(this).val() == $(this).attr("placeholder") )
                 $(this).val("");
         });
