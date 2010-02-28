@@ -41,11 +41,16 @@ $(document).ready(function() {
         function(event) {
             var data = parseDataAttrs(this);
             if (data['remote'] == "false") {
-                $("#" + data['update']).toggle("fast");
+                if (data['update'] != null) {
+                    $("#" + data['update']).toggle("fast");
+                } else if ($("#" + data['update-success']) != null) {
+                    // $("#" + data['update-success']).text();
+                }
                 return false;
             }
 
             if (data['update'] != null) {
+                // TODO somehow it needs to be a div, and can't be a "p"
                 $("#" + data['update']).html("Loading...");
                 var success_callback = function(response_html) {
                     $("#" + data['update']).html(response_html);
